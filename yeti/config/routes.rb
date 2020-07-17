@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   get '/genres/:id/delete', to: 'genres#delete'
-  resources :genres
+  delete '/genres/:id', to: 'genres#destroy', as: 'destroy_genre'
+  resources :genres, except: [:destroy]
 
   get '/authors/:id/delete', to: 'authors#delete'
-  resources :authors
+  delete '/authors/:id', to: 'authors#destroy', as: 'destroy_author'
+  resources :authors, except: [:destroy]
 
   get '/books/:id/delete', to: 'books#delete'
-  resources :books
+  delete '/books/:id', to: 'books#destroy', as: 'destroy_book'
+  resources :books, except: [:destroy]
 
   get '/signup', to: 'users#new'
   resources :users, except: [:new]

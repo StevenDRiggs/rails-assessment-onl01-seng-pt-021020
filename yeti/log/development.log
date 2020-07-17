@@ -2292,3 +2292,475 @@ puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.5) lib/puma/server.rb:472:in `process_client'
 puma (4.3.5) lib/puma/server.rb:328:in `block in run'
 puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mBook Load (1.8ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mAuthor Load (4.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" ORDER BY "authors"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (7.9ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Byron"], ["created_at", "2020-07-17 07:53:59.257190"], ["updated_at", "2020-07-17 07:53:59.257190"]]
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (5.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mAuthor Load (1.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" ORDER BY "authors"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:22:50 -0600
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:23:00 -0600
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#delete as HTML
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (1.9ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 27.5ms | Allocations: 2552)
+  Rendered books/delete.html.erb within layouts/application (Duration: 40.8ms | Allocations: 3776)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 1.0ms | Allocations: 17716)
+
+
+  Rendered partials/_delete.html.erb (Duration: 28.2ms | Allocations: 3094)
+  Rendered books/delete.html.erb within layouts/application (Duration: 45.4ms | Allocations: 4738)
+Completed 500 Internal Server Error in 196ms (ActiveRecord: 6.2ms | Allocations: 19270)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_path' for #<Book:0x000000780c946cc0>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: obj.destroy_path, method: delete do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+  
+ActionView::Template::Error (undefined method `destroy_path' for #<Book:0x000000780c99d598>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: obj.destroy_path, method: delete do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:24:02 -0600
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 670.7ms | Allocations: 72695)
+  Rendered books/delete.html.erb within layouts/application (Duration: 674.2ms | Allocations: 73016)
+Completed 500 Internal Server Error in 690ms (ActiveRecord: 0.6ms | Allocations: 74929)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_Book_path' for #<#<Class:0x000000780c9ef578>:0x000000780c9ec1c0>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: destroy_path(obj), method: delete do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:24:45 -0600
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:27:58 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:27:59 -0600
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:27:59 -0600
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:27:59 -0600
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 1238.1ms | Allocations: 123855)
+  Rendered books/delete.html.erb within layouts/application (Duration: 1241.7ms | Allocations: 124180)
+Completed 500 Internal Server Error in 1381ms (ActiveRecord: 1.2ms | Allocations: 135121)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_books_path' for #<#<Class:0x000000780c7cb3a0>:0x000000780c7c2d40>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <% raise destroy_path(obj).inspect %>
+    4: <%= form_tag action: destroy_path(obj), method: delete do %>
+    5:   <%= submit_tag "Delete #{obj.class}" %>
+    6:   <%#= link_to 'Cancel', obj.show_path %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+  Rendered partials/_delete.html.erb (Duration: 1528.0ms | Allocations: 163824)
+  Rendered books/delete.html.erb within layouts/application (Duration: 1601.7ms | Allocations: 184265)
+Completed 500 Internal Server Error in 1990ms (ActiveRecord: 4.1ms | Allocations: 217371)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_books_path' for #<#<Class:0x000000780c7cb3a0>:0x000000780c7c97a8>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <% raise destroy_path(obj).inspect %>
+    4: <%= form_tag action: destroy_path(obj), method: delete do %>
+    5:   <%= submit_tag "Delete #{obj.class}" %>
+    6:   <%#= link_to 'Cancel', obj.show_path %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:30:35 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/books/1/delete" for ::1 at 2020-07-17 02:30:36 -0600
+Processing by BooksController#delete as HTML
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  [1m[36mBook Load (1.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendering books/delete.html.erb within layouts/application
+  [1m[36mBook Load (2.8ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 1298.9ms | Allocations: 144928)
+  Rendered books/delete.html.erb within layouts/application (Duration: 2015.6ms | Allocations: 192604)
+Completed 500 Internal Server Error in 2137ms (ActiveRecord: 1.1ms | Allocations: 203173)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_book_path' for #<#<Class:0x0000007806b5a6e8>:0x0000007806b4f3d8>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <% raise destroy_path(obj).inspect %>
+    4: <%= form_tag action: destroy_path(obj), method: delete do %>
+    5:   <%= submit_tag "Delete #{obj.class}" %>
+    6:   <%#= link_to 'Cancel', obj.show_path %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+  Rendered partials/_delete.html.erb (Duration: 2147.3ms | Allocations: 214551)
+  Rendered books/delete.html.erb within layouts/application (Duration: 2407.8ms | Allocations: 247301)
+Completed 500 Internal Server Error in 2660ms (ActiveRecord: 1.3ms | Allocations: 271600)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_book_path' for #<#<Class:0x0000007806b5a6e8>:0x0000007806b1b6a0>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <% raise destroy_path(obj).inspect %>
+    4: <%= form_tag action: destroy_path(obj), method: delete do %>
+    5:   <%= submit_tag "Delete #{obj.class}" %>
+    6:   <%#= link_to 'Cancel', obj.show_path %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+  Rendered partials/_delete.html.erb (Duration: 3454.2ms | Allocations: 440079)
+  Rendered books/delete.html.erb within layouts/application (Duration: 3709.3ms | Allocations: 496414)
+Completed 500 Internal Server Error in 4857ms (ActiveRecord: 9.7ms | Allocations: 646444)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_book_path' for #<#<Class:0x0000007806b5a6e8>:0x000000780684dd88>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <% raise destroy_path(obj).inspect %>
+    4: <%= form_tag action: destroy_path(obj), method: delete do %>
+    5:   <%= submit_tag "Delete #{obj.class}" %>
+    6:   <%#= link_to 'Cancel', obj.show_path %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+  Rendered partials/_delete.html.erb (Duration: 3911.1ms | Allocations: 588360)
+  Rendered books/delete.html.erb within layouts/application (Duration: 4915.0ms | Allocations: 831124)
+Completed 500 Internal Server Error in 6658ms (ActiveRecord: 2.8ms | Allocations: 1061674)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_book_path' for #<#<Class:0x0000007806b5a6e8>:0x0000007809b726a0>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <% raise destroy_path(obj).inspect %>
+    4: <%= form_tag action: destroy_path(obj), method: delete do %>
+    5:   <%= submit_tag "Delete #{obj.class}" %>
+    6:   <%#= link_to 'Cancel', obj.show_path %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:37:52 -0600
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (2.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 666.9ms | Allocations: 73117)
+  Rendered books/delete.html.erb within layouts/application (Duration: 674.9ms | Allocations: 73722)
+Completed 500 Internal Server Error in 812ms (ActiveRecord: 7.4ms | Allocations: 86414)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_book_path' for #<#<Class:0x0000007d31fd9518>:0x0000007d3609b3f8>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: destroy_path(obj), method: delete do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/helpers/application_helper.rb:7:in `destroy_path'
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:46:50 -0600
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 719.1ms | Allocations: 73189)
+  Rendered books/delete.html.erb within layouts/application (Duration: 724.9ms | Allocations: 73794)
+Completed 500 Internal Server Error in 865ms (ActiveRecord: 5.1ms | Allocations: 86486)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `delete' for #<#<Class:0x000000708278b368>:0x0000007082788690>):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: destroy_path(obj), method: delete do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:47:57 -0600
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 7.9ms | Allocations: 1991)
+  Rendered books/delete.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2315)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.6ms | Allocations: 4073)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"/books/2", :controller=>"books", :id=>"2", :method=>:delete}):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: destroy_path(obj), method: :delete do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:56:46 -0600
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 15.6ms | Allocations: 2656)
+  Rendered books/delete.html.erb within layouts/application (Duration: 24.6ms | Allocations: 3261)
+Completed 500 Internal Server Error in 171ms (ActiveRecord: 4.0ms | Allocations: 15974)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"/books/2", :controller=>"books", :id=>"2", :method=>"delete"}):
+    1: <h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+    2: 
+    3: <%= form_tag action: destroy_path(obj), method: 'delete' do %>
+    4:   <%= submit_tag "Delete #{obj.class}" %>
+    5:   <%#= link_to 'Cancel', obj.show_path %>
+    6: <% end %>
+  
+app/views/partials/_delete.html.erb:3
+app/views/books/delete.html.erb:1
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:57:33 -0600
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 4.5ms | Allocations: 501)
+  Rendered books/delete.html.erb within layouts/application (Duration: 7.2ms | Allocations: 819)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 114ms (Views: 106.7ms | ActiveRecord: 0.6ms | Allocations: 9740)
+
+
+Started POST "/books/2/delete?method=delete&url=%2Fbooks%2F2" for ::1 at 2020-07-17 02:57:50 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/books/2/delete"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books/2/delete" for ::1 at 2020-07-17 02:58:33 -0600
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 4.3ms | Allocations: 445)
+  Rendered books/delete.html.erb within layouts/application (Duration: 7.6ms | Allocations: 763)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 39.5ms | ActiveRecord: 0.7ms | Allocations: 6311)
+
+
+Started POST "/books/2/delete?method=delete&url=%2Fbooks%2F2" for ::1 at 2020-07-17 02:58:35 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/books/2/delete"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books/2/delete" for ::1 at 2020-07-17 03:00:50 -0600
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBook Load (2.5ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 7.1ms | Allocations: 372)
+  Rendered books/delete.html.erb within layouts/application (Duration: 12.6ms | Allocations: 688)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 95ms (Views: 67.1ms | ActiveRecord: 2.5ms | Allocations: 6231)
+
+
+Started DELETE "/books/2" for ::1 at 2020-07-17 03:00:53 -0600
+Processing by BooksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+ktr4/TSy+vt2FC+OxShIuvR82GHYP1vtzFya43l8VbeIVsyDPYSxrTwWJCGv9pwA5c02xp5g9DEN+rb82pMPg==", "commit"=>"Delete Book", "id"=>"2"}
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:71:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/application_controller.rb:73:in `destroy'
+  [1m[36mBook Destroy (25.5ms)[0m  [1m[31mDELETE FROM "books" WHERE "books"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/application_controller.rb:73:in `destroy'
+  [1m[35m (9.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/application_controller.rb:73:in `destroy'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 71ms (ActiveRecord: 35.6ms | Allocations: 4341)
+
+
+Started GET "/books" for ::1 at 2020-07-17 03:00:53 -0600
+Processing by BooksController#index as HTML
+  Rendering books/index.html.erb within layouts/application
+  Rendered partials/_index.html.erb (Duration: 0.9ms | Allocations: 83)
+  Rendered books/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 405)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 41.0ms | ActiveRecord: 0.0ms | Allocations: 4776)
+
+
+Started GET "/books/1/delete" for ::1 at 2020-07-17 03:03:20 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by BooksController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (1.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:62:in `delete'
+  Rendering books/delete.html.erb within layouts/application
+  Rendered partials/_delete.html.erb (Duration: 6.3ms | Allocations: 470)
+  Rendered books/delete.html.erb within layouts/application (Duration: 10.4ms | Allocations: 792)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 136ms (Views: 51.4ms | ActiveRecord: 5.6ms | Allocations: 14118)
+
+
+Started GET "/books/1" for ::1 at 2020-07-17 03:03:24 -0600
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `show'
+  Rendering books/show.html.erb within layouts/application
+  Rendered partials/_show.html.erb (Duration: 2.2ms | Allocations: 83)
+  Rendered books/show.html.erb within layouts/application (Duration: 11.5ms | Allocations: 403)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 50.8ms | ActiveRecord: 0.7ms | Allocations: 5153)
+
+

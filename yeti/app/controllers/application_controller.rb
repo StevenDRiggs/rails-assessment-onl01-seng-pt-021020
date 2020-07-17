@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
 
   def destroy
     begin
-      object_ = @obj.find(params[:id]))
+      object_ = @obj.find(params[:id])
 
       object_.destroy
 
