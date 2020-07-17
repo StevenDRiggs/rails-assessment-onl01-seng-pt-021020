@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    self.instance_variable_set("@#{@snake_case}", @obj.all)
+    self.instance_variable_set("@#{@snake_case.pluralize}", @obj.all)
   end
 
   def show
