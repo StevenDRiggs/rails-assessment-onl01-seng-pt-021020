@@ -1,0 +1,12 @@
+<h2><%= @user.name %></h2>
+
+<h3>Email</h3>
+<p><%= @user.email %></p>
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+<%= favorite_books(@user) %>
+
+<%= favorite_authors(@user) %>
+
+<%= favorite_genres(@user) %>

@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :books, except: [:destroy]
 
   get '/signup', to: 'users#new'
-  resources :users, except: [:new]
+  resources :users, except: [:new] do
+    resources :authors, only: [:index, :show, :new, :create]
+    resources :books, only: [:index, :show, :new, :create]
+    resources :genres, only: [:index, :show, :new, :create]
+  end
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#logout'

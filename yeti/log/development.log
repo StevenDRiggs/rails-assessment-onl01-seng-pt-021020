@@ -4370,3 +4370,154 @@ Processing by GenresController#index as HTML
 Completed 200 OK in 47ms (Views: 42.4ms | ActiveRecord: 1.5ms | Allocations: 5615)
 
 
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (7.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "me"], ["email", "u@ser.com"], ["password_digest", "$2a$12$cMnLLgoxS6nU/DZSgsNTeOrmHw35r15g/MYRlCkkIQD4OEOs1l4bi"], ["created_at", "2020-07-18 07:30:54.199931"], ["updated_at", "2020-07-18 07:30:54.199931"]]
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mAuthor Load (1.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (7.1ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Frank Peretti"], ["created_at", "2020-07-18 07:32:18.525884"], ["updated_at", "2020-07-18 07:32:18.525884"]]
+  [1m[36mFavoriteAuthor Create (1.2ms)[0m  [1m[32mINSERT INTO "favorite_authors" ("user_id", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["author_id", 3], ["created_at", "2020-07-18 07:32:18.613106"], ["updated_at", "2020-07-18 07:32:18.613106"]]
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (5.6ms)[0m  [1m[32mINSERT INTO "books" ("title", "synopsis", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "The Oath"], ["synopsis", "The wages of sin is death..."], ["created_at", "2020-07-18 07:34:35.276106"], ["updated_at", "2020-07-18 07:34:35.276106"]]
+  [1m[36mFavoriteBook Create (4.2ms)[0m  [1m[32mINSERT INTO "favorite_books" ("user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["book_id", 3], ["created_at", "2020-07-18 07:34:35.324951"], ["updated_at", "2020-07-18 07:34:35.324951"]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGenre Create (2.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "fantasy"], ["created_at", "2020-07-18 07:36:58.173330"], ["updated_at", "2020-07-18 07:36:58.173330"]]
+  [1m[36mFavoriteGenre Create (0.7ms)[0m  [1m[32mINSERT INTO "favorite_genres" ("user_id", "genre_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["genre_id", 3], ["created_at", "2020-07-18 07:36:58.219531"], ["updated_at", "2020-07-18 07:36:58.219531"]]
+  [1m[35m (8.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mAuthor Load (1.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" ORDER BY "authors"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthorBook Create (1.9ms)[0m  [1m[32mINSERT INTO "author_books" ("author_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["author_id", 3], ["book_id", 3], ["created_at", "2020-07-18 07:38:06.151544"], ["updated_at", "2020-07-18 07:38:06.151544"]]
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBook Load (1.3ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "author_books" ON "books"."id" = "author_books"."book_id" WHERE "author_books"."author_id" = ? LIMIT ?[0m  [["author_id", 3], ["LIMIT", 11]]
+  [1m[36mBook Load (1.7ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mGenre Load (1.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBookGenre Create (4.9ms)[0m  [1m[32mINSERT INTO "book_genres" ("book_id", "genre_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["book_id", 3], ["genre_id", 3], ["created_at", "2020-07-18 07:40:38.729837"], ["updated_at", "2020-07-18 07:40:38.729837"]]
+  [1m[35m (8.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "book_genres" ON "genres"."id" = "book_genres"."genre_id" WHERE "book_genres"."book_id" = ? LIMIT ?[0m  [["book_id", 3], ["LIMIT", 11]]
+  [1m[36mAuthor Load (1.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "book_genres" ON "genres"."id" = "book_genres"."genre_id" INNER JOIN "books" ON "book_genres"."book_id" = "books"."id" INNER JOIN "author_books" ON "books"."id" = "author_books"."book_id" WHERE "author_books"."author_id" = ?[0m  [["author_id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (5.1ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Margaret Weis"], ["created_at", "2020-07-18 07:44:03.766931"], ["updated_at", "2020-07-18 07:44:03.766931"]]
+  [1m[36mFavoriteAuthor Create (0.8ms)[0m  [1m[32mINSERT INTO "favorite_authors" ("user_id", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["author_id", 4], ["created_at", "2020-07-18 07:44:03.785049"], ["updated_at", "2020-07-18 07:44:03.785049"]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthor Create (4.7ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Tracy Hickman"], ["created_at", "2020-07-18 07:44:49.731459"], ["updated_at", "2020-07-18 07:44:49.731459"]]
+  [1m[36mFavoriteAuthor Create (0.8ms)[0m  [1m[32mINSERT INTO "favorite_authors" ("user_id", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["author_id", 5], ["created_at", "2020-07-18 07:44:49.746222"], ["updated_at", "2020-07-18 07:44:49.746222"]]
+  [1m[35m (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (2.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Elven Star"], ["created_at", "2020-07-18 07:45:48.739184"], ["updated_at", "2020-07-18 07:45:48.739184"]]
+  [1m[36mFavoriteBook Create (0.9ms)[0m  [1m[32mINSERT INTO "favorite_books" ("user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["book_id", 4], ["created_at", "2020-07-18 07:45:48.756652"], ["updated_at", "2020-07-18 07:45:48.756652"]]
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."name" = ? LIMIT ?[0m  [["name", "Margaret Weis"], ["LIMIT", 1]]
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."name" = ? LIMIT ?[0m  [["name", "Tracy Hickman"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAuthorBook Create (1.4ms)[0m  [1m[32mINSERT INTO "author_books" ("author_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["author_id", 4], ["book_id", 4], ["created_at", "2020-07-18 07:47:28.837645"], ["updated_at", "2020-07-18 07:47:28.837645"]]
+  [1m[36mAuthorBook Create (0.5ms)[0m  [1m[32mINSERT INTO "author_books" ("author_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["author_id", 5], ["book_id", 4], ["created_at", "2020-07-18 07:47:28.850287"], ["updated_at", "2020-07-18 07:47:28.850287"]]
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mAuthor Load (1.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "author_books" ON "authors"."id" = "author_books"."author_id" WHERE "author_books"."book_id" = ? LIMIT ?[0m  [["book_id", 4], ["LIMIT", 11]]
+  [1m[36mBook Load (1.8ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."title" = ? LIMIT ?[0m  [["title", "Elven Star"], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "fantasy"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBookGenre Create (4.9ms)[0m  [1m[32mINSERT INTO "book_genres" ("book_id", "genre_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["book_id", 4], ["genre_id", 3], ["created_at", "2020-07-18 07:50:25.737270"], ["updated_at", "2020-07-18 07:50:25.737270"]]
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "book_genres" ON "genres"."id" = "book_genres"."genre_id" WHERE "book_genres"."book_id" = ? LIMIT ?[0m  [["book_id", 4], ["LIMIT", 11]]
+  [1m[36mGenre Load (2.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "book_genres" ON "genres"."id" = "book_genres"."genre_id" INNER JOIN "books" ON "book_genres"."book_id" = "books"."id" INNER JOIN "author_books" ON "books"."id" = "author_books"."book_id" WHERE "author_books"."author_id" = ?[0m  [["author_id", 4]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "book_genres" ON "genres"."id" = "book_genres"."genre_id" INNER JOIN "books" ON "book_genres"."book_id" = "books"."id" INNER JOIN "author_books" ON "books"."id" = "author_books"."book_id" WHERE "author_books"."author_id" = ?[0m  [["author_id", 5]]
+  [1m[36mGenre Load (2.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 11]]
+  [1m[36mAuthor Load (2.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT "books".* FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mGenre Load (1.5ms)[0m  [1m[34mSELECT "genres".* FROM "genres" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mFavoriteAuthor Load (1.7ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mAuthor Load (1.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mAuthor Load (1.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mAuthor Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mAuthor Load (1.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 1]]
+Started GET "/users/1" for ::1 at 2020-07-18 02:27:48 -0600
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:26:in `favorite_books'
+  [1m[36mAuthor Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (6.7ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:47:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 365.3ms | Allocations: 31394)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 669ms (Views: 512.3ms | ActiveRecord: 41.5ms | Allocations: 52084)
+
+
+Started GET "/users/2" for ::1 at 2020-07-18 02:27:58 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (15.6ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:26:in `favorite_books'
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:32:in `favorite_books'
+  Rendered users/show.html.erb within layouts/application (Duration: 97.7ms | Allocations: 7177)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 17.6ms | Allocations: 8304)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<Book:0x0000007dafa29c20>):
+     5: 
+     6: <%= link_to 'Edit Profile', edit_user_path(@user) %>
+     7: 
+     8: <%= favorite_books(@user) %>
+     9: 
+    10: <%= favorite_authors(@user) %>
+    11: 
+  
+app/helpers/users_helper.rb:33:in `block in favorite_books'
+app/helpers/users_helper.rb:32:in `favorite_books'
+app/views/users/show.html.erb:8
+Started GET "/users/2" for ::1 at 2020-07-18 02:28:33 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:26:in `favorite_books'
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:32:in `favorite_books'
+  [1m[36mAuthor Exists? (8.0ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:11:in `favorite_authors'
+  [1m[36mGenre Exists? (6.7ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:47:in `favorite_genres'
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:53:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 247.9ms | Allocations: 36098)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 349ms (Views: 243.1ms | ActiveRecord: 34.9ms | Allocations: 49500)
+
+
+Started GET "/authors/4" for ::1 at 2020-07-18 02:28:46 -0600
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAuthor Load (0.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `show'
+  Rendering authors/show.html.erb within layouts/application
+  Rendered partials/_show.html.erb (Duration: 4.2ms | Allocations: 286)
+  Rendered authors/show.html.erb within layouts/application (Duration: 11.6ms | Allocations: 611)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 51.7ms | ActiveRecord: 0.8ms | Allocations: 5909)
+
+
