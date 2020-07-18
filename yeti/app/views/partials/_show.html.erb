@@ -1,3 +1,5 @@
 <h2><%= obj.display_name %></h2>
 
 <%= display_attributes(obj) %>
+
+<%= button_to 'Delete', delete_path(obj), method: :get %>
