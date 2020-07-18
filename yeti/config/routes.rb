@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favorite_authors/update'
   root 'application#welcome'
 
   get '/genres/:id/delete', to: 'genres#delete', as: 'delete_genre'
@@ -19,6 +20,10 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :show, :new, :create]
     resources :genres, only: [:index, :show, :new, :create]
   end
+
+  patch '/users/:user_id/favorite_authors/:id', to: 'favorite_authors#update', as: 'update_author_notes'
+  patch '/users/:user_id/favorite_books/:id', to: 'favorite_books#update', as: 'update_book_notes'
+  patch '/users/:user_id/favorite_genres/:id', to: 'favorite_genres#update', as: 'update_genre_notes'
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#logout'

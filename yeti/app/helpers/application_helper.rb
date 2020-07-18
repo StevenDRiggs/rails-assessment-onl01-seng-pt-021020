@@ -4,7 +4,11 @@ module ApplicationHelper
   end
 
   def new_path(group)
-    self.send("new_#{group}_path")
+    if params[:user_id]
+      self.send("new_user_#{group}_path", params[:user_id])
+    else
+      self.send("new_#{group}_path")
+    end
   end
 
   def delete_path(object_)

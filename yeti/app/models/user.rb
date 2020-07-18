@@ -9,4 +9,9 @@ class User < ApplicationRecord
 
   has_many :favorite_genres
   has_many :genres, through: :favorite_genres
+
+  
+  def fav_authors(author)
+    self.favorite_authors.where(author_id: author.id).first
+  end
 end
