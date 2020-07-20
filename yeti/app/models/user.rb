@@ -14,4 +14,12 @@ class User < ApplicationRecord
   def fav_authors(author)
     self.favorite_authors.where(author_id: author.id).first
   end
+
+  def fav_books(book)
+    fb = self.favorite_books.where(book_id: book.id).first
+  end
+  
+  def fav_genres(genre)
+    self.favorite_genres.where(genre_id: genre.id).first
+  end
 end

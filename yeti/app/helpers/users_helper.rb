@@ -9,14 +9,14 @@ module UsersHelper
       HTML
 
       authors.each do |author|
+        fa = user.fav_authors(author)
         html << "#{self.send('link_to', author.name, author)}"
-        html << self.send('form_for', user.fav_authors(author), url: update_author_notes_path(user, author)) { |f|
+        html << self.send('form_for', fa, url: update_author_notes_path(user, fa)) { |f|
           inner_html = "#{f.label :notes}"
           inner_html << "#{f.text_area :notes}"
           inner_html << "#{f.submit 'Save Note'}"
           inner_html.html_safe
         }
-
       end
 
       html << '</fieldset>'
@@ -37,7 +37,14 @@ module UsersHelper
       HTML
 
       books.each do |book|
-        html << "#{self.send('link_to', book.title, book)}<br>"
+        fb = user.fav_books(book)
+        html << "#{self.send('link_to', book.title, book)}"
+        html << self.send('form_for', fb, url: update_book_notes_path(user, fb)) { |f|
+          inner_html = "#{f.label :notes}"
+          inner_html << "#{f.text_area :notes}"
+          inner_html << "#{f.submit 'Save Note'}"
+          inner_html.html_safe
+        }
       end
 
       html << '</fieldset>'
@@ -54,11 +61,18 @@ module UsersHelper
     unless genres.empty? 
       html = <<-HTML
         <fieldset>
-          <legend>Favorite Books (#{self.send('link_to', 'View All', user_genres_path(user))})</legend>
+          <legend>Favorite Genres (#{self.send('link_to', 'View All', user_genres_path(user))})</legend>
       HTML
 
       genres.each do |genre|
-        html << "#{self.send('link_to', genre.name, genre)}<br>"
+        fg = user.fav_genres(genre)
+        html << "#{self.send('link_to', genre.name, genre)}"
+        html << self.send('form_for', fg, url: update_genre_notes_path(user, fg)) { |f|
+          inner_html = "#{f.label :notes}"
+          inner_html << "#{f.text_area :notes}"
+          inner_html << "#{f.submit 'Save Note'}"
+          inner_html.html_safe
+        }
       end
 
       html << '</fieldset>'

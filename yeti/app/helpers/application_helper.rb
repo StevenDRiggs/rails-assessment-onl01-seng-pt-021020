@@ -1,4 +1,33 @@
 module ApplicationHelper
+  def flashed
+    if flash[:errors]
+      class_ = 'errors'
+      @messages = flash[:errors]
+    elsif flash[:success]
+      class_ = 'success'
+      @messages = flash[:success]
+    end
+
+    if @messages
+      html = <<-HTML
+        <div class="#{class_}">
+          <ul>
+      HTML
+
+      @messages.each do |msg|
+        html << "<li>#{msg}</li>"
+      end
+
+      html << <<-HTML
+          </ul>
+        </div>
+      HTML
+      html.html_safe
+    else
+      nil
+    end
+  end
+
   def index_path(object_)
     self.send("#{object_.class_name.tableize}_path")
   end

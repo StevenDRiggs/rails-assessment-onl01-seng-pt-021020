@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :define_variables
+  before_action :define_variables, except: :welcome
+
+  def welcome
+  end
 
   def define_variables
     @obj = Object.const_get(self.class.to_s[0..-11].singularize)

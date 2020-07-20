@@ -2,12 +2,12 @@ class FavoriteAuthorsController < ApplicationController
   def update
     begin
       FavoriteAuthor.find(params[:id]).update(object_params)
-
-    rescue ActiveRecord::FileNotFound
+    rescue ActiveRecord::RecordNotFound
       flash[:errors] = ['Something went wrong...']
     end
 
-    redirect_to users_path
+    flash[:success] = ['Favorite Author Notes Updated']
+    redirect_to user_path(params[:user_id])
   end
 
   protected
