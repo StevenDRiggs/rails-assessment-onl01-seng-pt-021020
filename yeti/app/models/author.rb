@@ -6,4 +6,6 @@ class Author < ApplicationRecord
 
   has_many :favorite_authors
   has_many :users, through: :favorite_authors
+
+  validates :name, presence: true
 end

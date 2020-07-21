@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :favorite_genres
   has_many :genres, through: :favorite_genres
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
+
   
   def fav_authors(author)
     self.favorite_authors.where(author_id: author.id).first

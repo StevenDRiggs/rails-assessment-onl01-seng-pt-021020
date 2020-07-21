@@ -23,16 +23,16 @@ class ApplicationController < ActionController::Base
   end
 
   def new
-    self.instance_variable_set("@#{@snake_case}", @obj.new)
+    @object_ = @obj.new
   end
 
   def create
-    object_ = @obj.new(self.object_params)
-    if object_.save
-      redirect_to object_
+    @object_ = @obj.new(self.object_params)
+    if @object_.save
+      redirect_to @object_
     else
-      flash[:errors] = object_.errors.full_messages
-      render self.send("new_#{@snake_case}_path")
+      flash[:errors] = @object_.errors.full_messages
+      render :new
     end
   end
 
