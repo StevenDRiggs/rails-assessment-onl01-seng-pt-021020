@@ -8,4 +8,8 @@ class Genre < ApplicationRecord
   has_many :users, through: :favorite_genres
 
   validates :name, presence: true
+
+  def self.popular
+    self.joins(:favorite_genres).group(:name).order(count_name: :desc).order(name: :asc).count(:name)
+  end
 end

@@ -10486,3 +10486,273 @@ Migrating to CreateFavoriteGenres (20200716135548)
   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mFavoriteGenre Create (1.5ms)[0m  [1m[32mINSERT INTO "favorite_genres" ("user_id", "genre_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["genre_id", 1], ["created_at", "2020-07-21 01:59:37.683657"], ["updated_at", "2020-07-21 01:59:37.683657"]]
   [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2020-07-20 20:06:27 -0600
+  [1m[35m (6.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (Duration: 8.9ms | Allocations: 481)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 143ms (Views: 117.1ms | ActiveRecord: 0.0ms | Allocations: 10243)
+
+
+Started GET "/users" for ::1 at 2020-07-20 20:06:34 -0600
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:68:in `index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/helpers/application_helper.rb:71:in `index'
+  Rendered partials/_index.html.erb (Duration: 61.2ms | Allocations: 6848)
+  Rendered users/index.html.erb within layouts/application (Duration: 65.2ms | Allocations: 7180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 152ms (Views: 107.0ms | ActiveRecord: 6.1ms | Allocations: 16791)
+
+
+Started GET "/users/1" for ::1 at 2020-07-20 20:06:37 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/helpers/users_helper.rb:39:in `favorite_books'
+  [1m[36mFavoriteBook Load (0.8ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 1], ["book_id", 10], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mFavoriteBook Load (0.5ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 1], ["book_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mAuthor Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mAuthor Load (1.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/helpers/users_helper.rb:11:in `favorite_authors'
+  [1m[36mFavoriteAuthor Load (1.3ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 1], ["author_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mFavoriteAuthor Load (0.8ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 1], ["author_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mGenre Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/helpers/users_helper.rb:67:in `favorite_genres'
+  [1m[36mFavoriteGenre Load (0.9ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 1], ["genre_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  [1m[36mFavoriteGenre Load (0.7ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 1], ["genre_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 514.0ms | Allocations: 68424)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 552ms (Views: 505.7ms | ActiveRecord: 32.6ms | Allocations: 73880)
+
+
+Started GET "/users/1/books" for ::1 at 2020-07-20 20:06:50 -0600
+Processing by BooksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "books" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:68:in `index'
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/helpers/application_helper.rb:71:in `index'
+  Rendered partials/_index.html.erb (Duration: 14.7ms | Allocations: 1927)
+  Rendered books/index.html.erb within layouts/application (Duration: 18.9ms | Allocations: 2118)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 44.8ms | ActiveRecord: 1.6ms | Allocations: 6811)
+
+
+Started GET "/users/2" for ::1 at 2020-07-20 20:06:57 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:39:in `favorite_books'
+  [1m[36mFavoriteBook Load (0.5ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 2], ["book_id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mFavoriteBook Load (0.5ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 2], ["book_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mAuthor Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:11:in `favorite_authors'
+  [1m[36mFavoriteAuthor Load (0.6ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 2], ["author_id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mFavoriteAuthor Load (0.6ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 2], ["author_id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mGenre Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:67:in `favorite_genres'
+  [1m[36mFavoriteGenre Load (0.6ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 2], ["genre_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  [1m[36mFavoriteGenre Load (0.8ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 2], ["genre_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 119.1ms | Allocations: 13872)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 153ms (Views: 135.3ms | ActiveRecord: 8.8ms | Allocations: 18550)
+
+
+Started GET "/users/2/authors" for ::1 at 2020-07-20 20:07:01 -0600
+Processing by AuthorsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  Rendering authors/index.html.erb within layouts/application
+  [1m[36mAuthor Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:68:in `index'
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors"[0m
+  ↳ app/helpers/application_helper.rb:71:in `index'
+  Rendered partials/_index.html.erb (Duration: 15.0ms | Allocations: 1905)
+  Rendered authors/index.html.erb within layouts/application (Duration: 20.5ms | Allocations: 2097)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 49.6ms | ActiveRecord: 1.7ms | Allocations: 6723)
+
+
+Started GET "/users/3" for ::1 at 2020-07-20 20:07:08 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/helpers/users_helper.rb:39:in `favorite_books'
+  [1m[36mFavoriteBook Load (0.5ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 3], ["book_id", 10], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mFavoriteBook Load (0.5ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 3], ["book_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mAuthor Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mAuthor Load (0.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/helpers/users_helper.rb:11:in `favorite_authors'
+  [1m[36mFavoriteAuthor Load (0.6ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 3], ["author_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mFavoriteAuthor Load (0.6ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 3], ["author_id", 10], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mGenre Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/helpers/users_helper.rb:67:in `favorite_genres'
+  [1m[36mFavoriteGenre Load (0.5ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 3], ["genre_id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 99.7ms | Allocations: 12520)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 133ms (Views: 117.9ms | ActiveRecord: 7.8ms | Allocations: 17178)
+
+
+Started GET "/users/3/genres" for ::1 at 2020-07-20 20:07:09 -0600
+Processing by GenresController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering genres/index.html.erb within layouts/application
+  [1m[36mGenre Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:68:in `index'
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/helpers/application_helper.rb:71:in `index'
+  Rendered partials/_index.html.erb (Duration: 14.6ms | Allocations: 1904)
+  Rendered genres/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 2094)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 47.0ms | ActiveRecord: 1.7ms | Allocations: 6768)
+
+
+Started GET "/users/2" for ::1 at 2020-07-20 20:07:18 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:39:in `favorite_books'
+  [1m[36mFavoriteBook Load (0.7ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 2], ["book_id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mFavoriteBook Load (0.6ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" WHERE "favorite_books"."user_id" = ? AND "favorite_books"."book_id" = ? ORDER BY "favorite_books"."id" ASC LIMIT ?[0m  [["user_id", 2], ["book_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `fav_books'
+  [1m[36mAuthor Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:11:in `favorite_authors'
+  [1m[36mFavoriteAuthor Load (0.5ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 2], ["author_id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mFavoriteAuthor Load (0.6ms)[0m  [1m[34mSELECT "favorite_authors".* FROM "favorite_authors" WHERE "favorite_authors"."user_id" = ? AND "favorite_authors"."author_id" = ? ORDER BY "favorite_authors"."id" ASC LIMIT ?[0m  [["user_id", 2], ["author_id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `fav_authors'
+  [1m[36mGenre Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/helpers/users_helper.rb:67:in `favorite_genres'
+  [1m[36mFavoriteGenre Load (0.6ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 2], ["genre_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  [1m[36mFavoriteGenre Load (0.5ms)[0m  [1m[34mSELECT "favorite_genres".* FROM "favorite_genres" WHERE "favorite_genres"."user_id" = ? AND "favorite_genres"."genre_id" = ? ORDER BY "favorite_genres"."id" ASC LIMIT ?[0m  [["user_id", 2], ["genre_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `fav_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 109.7ms | Allocations: 13863)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 144ms (Views: 128.3ms | ActiveRecord: 8.5ms | Allocations: 18531)
+
+
+Started GET "/users/2/books" for ::1 at 2020-07-20 20:07:23 -0600
+Processing by BooksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "books" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:68:in `index'
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/helpers/application_helper.rb:71:in `index'
+  Rendered partials/_index.html.erb (Duration: 28.9ms | Allocations: 1898)
+  Rendered books/index.html.erb within layouts/application (Duration: 30.4ms | Allocations: 1991)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 53.4ms | ActiveRecord: 2.0ms | Allocations: 6103)
+
+
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mFavoriteBook Load (1.9ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" GROUP BY "favorite_books"."book_id" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "favorite_books"."book_id" AS favorite_books_book_id FROM "favorite_books" GROUP BY "favorite_books"."book_id"[0m
+  [1m[35m (20.1ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "favorite_books"."book_id" AS favorite_books_book_id FROM "favorite_books" GROUP BY "favorite_books"."book_id"[0m
+  [1m[36mFavoriteBook Load (5.7ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" GROUP BY "favorite_books"."book_id" ORDER BY "favorite_books"."count" ASC LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "favorite_books"."book_id" AS favorite_books_book_id FROM "favorite_books" GROUP BY "favorite_books"."book_id"[0m
+  [1m[36mFavoriteBook Load (2.3ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" GROUP BY "favorite_books"."book_id" ORDER BY "desc" ASC LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mFavoriteBook Load (2.4ms)[0m  [1m[34mSELECT "favorite_books".* FROM "favorite_books" GROUP BY "favorite_books"."book_id" ORDER BY "favorite_books"."count" DESC LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mBook Load (1.3ms)[0m  [1m[34mSELECT                 SELECT book_id, sum(id_count) AS 'count'
+                FROM books INNER JOIN (
+                  SELECT book_id, count() AS id_count
+                  FROM favorite_books
+                  GROUP BY book_id
+                  ORDER BY count() DESC
+                )
+                GROUP BY books.title
+                ORDER BY 'count' DESC, books.title ASC
+ FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mBook Load (1.6ms)[0m  [1m[34mSELECT                 book_id, sum(id_count) AS 'count'
+                FROM books INNER JOIN (
+                  SELECT book_id, count() AS id_count
+                  FROM favorite_books
+                  GROUP BY book_id
+                  ORDER BY count() DESC
+                )
+                GROUP BY books.title
+                ORDER BY 'count' DESC, books.title ASC
+ FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mBook Load (1.4ms)[0m  [1m[34mSELECT                 'book_id', sum('id_count') AS 'count'
+                FROM 'books' INNER JOIN (
+                  SELECT 'book_id', count() AS 'id_count'
+                  FROM 'favorite_books'
+                  GROUP BY 'book_id'
+                  ORDER BY count() DESC
+                )
+                GROUP BY 'books'.'title'
+                ORDER BY 'count' DESC, 'books'.'title' ASC
+ FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT("books"."title") AS count_title, "books"."title" AS books_title FROM "books" INNER JOIN "favorite_books" ON "favorite_books"."book_id" = "books"."id" GROUP BY "books"."title" ORDER BY "books"."count" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT COUNT("books"."title") AS count_title, "books"."title" AS books_title FROM "books" INNER JOIN "favorite_books" ON "favorite_books"."book_id" = "books"."id" GROUP BY "books"."title" ORDER BY "count_title" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT COUNT("books"."title") AS count_title, "books"."title" AS books_title FROM "books" INNER JOIN "favorite_books" ON "favorite_books"."book_id" = "books"."id" GROUP BY "books"."title" ORDER BY "count_title" DESC, "books"."title" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT("authors"."name") AS count_name, "authors"."name" AS authors_name FROM "authors" INNER JOIN "favorite_authors" ON "favorite_authors"."author_id" = "authors"."id" GROUP BY "authors"."name" ORDER BY "count_name" DESC, "authors"."name" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT("genres"."name") AS count_name, "genres"."name" AS genres_name FROM "genres" INNER JOIN "favorite_genres" ON "favorite_genres"."genre_id" = "genres"."id" GROUP BY "genres"."name" ORDER BY "count_name" DESC, "genres"."name" ASC[0m

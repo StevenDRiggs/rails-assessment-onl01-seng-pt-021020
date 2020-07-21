@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  get 'favorite_authors/update'
   root 'application#welcome'
 
+  get '/genres/popular', to: 'genres#popular', as: 'popular_genres'
   get '/genres/:id/delete', to: 'genres#delete', as: 'delete_genre'
   delete '/genres/:id', to: 'genres#destroy', as: 'destroy_genre'
   resources :genres, except: [:destroy]
 
+  get '/authors/popular', to: 'authors#popular', as: 'popular_authors'
   get '/authors/:id/delete', to: 'authors#delete', as: 'delete_author'
   delete '/authors/:id', to: 'authors#destroy', as: 'destroy_author'
   resources :authors, except: [:destroy]
 
+  get 'books/popular', to: 'books#popular', as: 'popular_books'
   get '/books/:id/delete', to: 'books#delete', as: 'delete_book'
   delete '/books/:id', to: 'books#destroy', as: 'destroy_book'
   resources :books, except: [:destroy]

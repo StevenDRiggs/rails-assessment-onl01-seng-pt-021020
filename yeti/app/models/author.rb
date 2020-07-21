@@ -8,4 +8,8 @@ class Author < ApplicationRecord
   has_many :users, through: :favorite_authors
 
   validates :name, presence: true
+
+  def self.popular
+    self.joins(:favorite_authors).group(:name).order(count_name: :desc).order(name: :asc).count(:name)
+  end
 end
