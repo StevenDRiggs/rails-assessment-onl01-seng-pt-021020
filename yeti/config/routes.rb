@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   patch '/users/:user_id/favorite_genres/:id', to: 'favorite_genres#update', as: 'update_genre_notes'
 
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#do_login', as: 'do_login'
   get '/logout', to: 'sessions#logout'
   post '/logout', to: 'sessions#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

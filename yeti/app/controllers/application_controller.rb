@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   before_action :define_variables, except: :welcome
 
   def welcome
+    if session[:user_id]
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   def define_variables

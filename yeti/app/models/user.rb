@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :favorite_genres
   has_many :genres, through: :favorite_genres
 
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
   

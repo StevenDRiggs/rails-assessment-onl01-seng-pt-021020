@@ -10882,3 +10882,575 @@ Processing by GenresController#popular as HTML
 Completed 200 OK in 100ms (Views: 68.2ms | ActiveRecord: 6.0ms | Allocations: 11113)
 
 
+Started GET "/signup" for ::1 at 2020-07-22 01:35:08 -0600
+Processing by UsersController#new as HTML
+Completed 406 Not Acceptable in 90ms (ActiveRecord: 3.5ms | Allocations: 10516)
+
+
+  
+ActionController::MissingExactTemplate (UsersController#new is missing a template for request formats: text/html):
+  
+actionpack (6.0.3.2) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.3.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.2) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.2) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.2) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.2) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/signup" for ::1 at 2020-07-22 01:35:49 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 77)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 39.0ms | ActiveRecord: 0.0ms | Allocations: 5136)
+
+
+Started GET "/signup" for ::1 at 2020-07-22 01:38:15 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 968)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 2263)
+
+
+  
+ActionView::Template::Error (<ActionController::Parameters {"controller"=>"users", "action"=>"new"} permitted: false>):
+    1: <% raise params.inspect %>
+  
+app/views/users/new.html.erb:1
+Started GET "/signup" for ::1 at 2020-07-22 01:38:41 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 950)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms | Allocations: 2250)
+
+
+  
+ActionView::Template::Error (nil):
+    1: <% raise @object.inspect %>
+  
+app/views/users/new.html.erb:1
+Started GET "/signup" for ::1 at 2020-07-22 01:39:37 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 975)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 2275)
+
+
+  
+ActionView::Template::Error (#<User id: nil, name: nil, email: nil, password_digest: nil, created_at: nil, updated_at: nil>):
+    1: <% raise @object_.inspect %>
+  
+app/views/users/new.html.erb:1
+Started GET "/signup" for ::1 at 2020-07-22 01:47:30 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_new_or_edit.html.erb (Duration: 91.4ms | Allocations: 7877)
+  Rendered users/new.html.erb within layouts/application (Duration: 95.4ms | Allocations: 8198)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 135ms (Views: 129.3ms | ActiveRecord: 0.0ms | Allocations: 13160)
+
+
+Started POST "/users" for ::1 at 2020-07-22 01:47:49 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"DWhu3Qs6gcNoNSB7fd+Jt23OJg8IyZacV91b/s0UXenIJGJWospD2Tx3vpqhT5mV8g4GRTFFs77TPALXqYjROQ==", "user"=>{"name"=>"Jax Snow", "email"=>"sfriggs21@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (1.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Create (14.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Jax Snow"], ["email", "sfriggs21@gmail.com"], ["password_digest", "$2a$12$36dKZxQnjIV97jgFGZmkXeIKetjlbmiPCL4DzlOWHkPJCvcMS.SBW"], ["created_at", "2020-07-22 07:47:49.636827"], ["updated_at", "2020-07-22 07:47:49.636827"]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 521ms (ActiveRecord: 29.8ms | Allocations: 4980)
+
+
+Started GET "/users/6" for ::1 at 2020-07-22 01:47:49 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mAuthor Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (5.3ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 123.9ms | Allocations: 13602)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 197ms (Views: 140.3ms | ActiveRecord: 15.4ms | Allocations: 19051)
+
+
+Started GET "/users/6" for ::1 at 2020-07-22 01:53:53 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mAuthor Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 154.5ms | Allocations: 22753)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 255ms (Views: 181.4ms | ActiveRecord: 3.2ms | Allocations: 36031)
+
+
+Started POST "/users" for ::1 at 2020-07-22 01:53:58 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"DWhu3Qs6gcNoNSB7fd+Jt23OJg8IyZacV91b/s0UXenIJGJWospD2Tx3vpqhT5mV8g4GRTFFs77TPALXqYjROQ==", "user"=>{"name"=>"Jax Snow", "email"=>"sfriggs21@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 694)
+
+
+  
+NoMethodError (undefined method `inspext' for #<ActionController::Parameters:0x00000070b5198ef0>):
+  
+app/controllers/users_controller.rb:3:in `create'
+Started POST "/users" for ::1 at 2020-07-22 01:54:15 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"DWhu3Qs6gcNoNSB7fd+Jt23OJg8IyZacV91b/s0UXenIJGJWospD2Tx3vpqhT5mV8g4GRTFFs77TPALXqYjROQ==", "user"=>{"name"=>"Jax Snow", "email"=>"sfriggs21@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms | Allocations: 4750)
+
+
+  
+RuntimeError (<ActionController::Parameters {"authenticity_token"=>"DWhu3Qs6gcNoNSB7fd+Jt23OJg8IyZacV91b/s0UXenIJGJWospD2Tx3vpqhT5mV8g4GRTFFs77TPALXqYjROQ==", "user"=>{"name"=>"Jax Snow", "email"=>"sfriggs21@gmail.com", "password"=>""}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} permitted: false>):
+  
+app/controllers/users_controller.rb:3:in `create'
+Started GET "/signup" for ::1 at 2020-07-22 01:57:37 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_new_or_edit.html.erb (Duration: 13.5ms | Allocations: 1020)
+  Rendered users/new.html.erb within layouts/application (Duration: 15.0ms | Allocations: 1106)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 120ms (Views: 48.3ms | ActiveRecord: 3.9ms | Allocations: 14208)
+
+
+Started POST "/users" for ::1 at 2020-07-22 01:57:50 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"0L2hL+iyGCutRGQP3DCGUscEqwmee/M3ecpNxNBoNZQV8a2kQULaMfkG+u4AoJZwWMSLQ6f31hX9KxTttPS5RA==", "user"=>{"name"=>"Jax Snow", "email"=>"sfriggs21@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jax Snow"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sfriggs21@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_new_or_edit.html.erb (Duration: 8.9ms | Allocations: 978)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.3ms | Allocations: 1064)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 518ms (Views: 48.5ms | ActiveRecord: 3.3ms | Allocations: 10656)
+
+
+Started POST "/users" for ::1 at 2020-07-22 01:58:19 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"9VpWW+E1XERxmi2O61nic5wgFNEEoRaeLzaypL4XNBEwFlrQSMWeXiXYs283yfJRA+A0mz0tM7yr1+uN2ou4wQ==", "user"=>{"name"=>"Jax Snow2", "email"=>"sfriggs1@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jax Snow2"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sfriggs1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Jax Snow2"], ["email", "sfriggs1@gmail.com"], ["password_digest", "$2a$12$J0dhcE..vU1LI8sCIRBvsOZPhchuoaMWdvLopK1L9OmLZs11xkTDC"], ["created_at", "2020-07-22 07:58:20.367599"], ["updated_at", "2020-07-22 07:58:20.367599"]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 488ms (ActiveRecord: 24.0ms | Allocations: 6792)
+
+
+Started GET "/users/7" for ::1 at 2020-07-22 01:58:20 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mAuthor Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 211.3ms | Allocations: 28076)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 260ms (Views: 230.1ms | ActiveRecord: 16.6ms | Allocations: 32814)
+
+
+Started GET "/users/7" for ::1 at 2020-07-22 01:58:32 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mAuthor Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 25.5ms | Allocations: 3056)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 50.3ms | ActiveRecord: 3.3ms | Allocations: 7711)
+
+
+Started GET "/users" for ::1 at 2020-07-22 01:59:37 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:68:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/helpers/application_helper.rb:71:in `index'
+  Rendered partials/_index.html.erb (Duration: 68.6ms | Allocations: 6658)
+  Rendered users/index.html.erb within layouts/application (Duration: 77.9ms | Allocations: 6991)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 164ms (Views: 99.1ms | ActiveRecord: 11.1ms | Allocations: 15575)
+
+
+Started GET "/signup" for ::1 at 2020-07-22 01:59:41 -0600
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_new_or_edit.html.erb (Duration: 11.4ms | Allocations: 961)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.7ms | Allocations: 1047)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 43.3ms | ActiveRecord: 0.0ms | Allocations: 5146)
+
+
+Started POST "/users" for ::1 at 2020-07-22 01:59:53 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"Xz22tLvkm+gwBK6721AnyIvwNMB45o5Xx58JPUdn+9Cacbo/EhRZ8mRGMFoHwDfqFDAUikFqq3VDflAUI/t3AA==", "user"=>{"name"=>"Dhf", "email"=>"Gdt", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Dhf"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "Gdt"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Dhf"], ["email", "Gdt"], ["password_digest", "$2a$12$RQgZPHzL/VwR23BSrNsb2uQ89IOZAw6uzJ52iWtJLTzZ7IAE8ZkqK"], ["created_at", "2020-07-22 07:59:54.224968"], ["updated_at", "2020-07-22 07:59:54.224968"]]
+  ↳ app/controllers/application_controller.rb:31:in `create'
+  [1m[35m (11.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/application_controller.rb:31:in `create'
+Redirected to http://localhost:3000/users/8
+Completed 302 Found in 476ms (ActiveRecord: 16.6ms | Allocations: 6933)
+
+
+Started GET "/users/8" for ::1 at 2020-07-22 01:59:54 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mAuthor Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 217.1ms | Allocations: 24319)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 290ms (Views: 253.8ms | ActiveRecord: 22.4ms | Allocations: 29181)
+
+
+Started GET "/login" for ::1 at 2020-07-22 02:01:20 -0600
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 569)
+
+
+  
+NameError (uninitialized constant Session):
+  
+app/controllers/application_controller.rb:8:in `const_get'
+app/controllers/application_controller.rb:8:in `define_variables'
+Started GET "/login" for ::1 at 2020-07-22 02:11:02 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms | Allocations: 1185)
+
+
+  
+ActiveRecord::StatementInvalid (Could not find table 'sessions'):
+  
+app/controllers/application_controller.rb:26:in `new'
+Started GET "/login" for ::1 at 2020-07-22 02:14:17 -0600
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms | Allocations: 1995)
+
+
+  
+ActionView::MissingTemplate (Missing template sessions/login, application/login with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/data/data/com.termux/files/home/labs/rails-assessment-onl01-seng-pt-021020/yeti/app/views"
+  * "/data/data/com.termux/files/home/.rvm/gems/ruby-2.5.7/gems/actiontext-6.0.3.2/app/views"
+  * "/data/data/com.termux/files/home/.rvm/gems/ruby-2.5.7/gems/actionmailbox-6.0.3.2/app/views"
+):
+  
+app/controllers/sessions_controller.rb:3:in `new'
+Started GET "/login" for ::1 at 2020-07-22 02:23:06 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 843.1ms | Allocations: 73750)
+Completed 500 Internal Server Error in 896ms (ActiveRecord: 2.0ms | Allocations: 75061)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `do_login_path' for #<#<Class:0x00000070bb285678>:0x00000070bb26d938>):
+    1: <%= form_tag do_login_path do %>
+    2:   <fieldset>
+    3:     <%= label_tag 'name_or_email' %>
+    4:     <%= text_field_tag 'name_or_email' %>
+  
+app/views/sessions/login.html.erb:1
+app/controllers/sessions_controller.rb:3:in `new'
+Started GET "/login" for ::1 at 2020-07-22 02:25:19 -0600
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 674.2ms | Allocations: 73589)
+Completed 500 Internal Server Error in 721ms (ActiveRecord: 1.4ms | Allocations: 76891)
+
+
+  
+ActionView::Template::Error (undefined method `password_tag' for #<#<Class:0x00000077a5fe02a0>:0x00000077ac9a5168>):
+    3:     <%= label_tag 'name_or_email' %>
+    4:     <%= text_field_tag 'name_or_email' %>
+    5:     <%= label_tag 'password' %>
+    6:     <%= password_tag 'password' %>
+    7:   </fieldset>
+    8: <% end %>
+  
+app/views/sessions/login.html.erb:6
+app/views/sessions/login.html.erb:1
+app/controllers/sessions_controller.rb:3:in `new'
+Started GET "/login" for ::1 at 2020-07-22 02:26:40 -0600
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 19.3ms | Allocations: 458)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 210ms (Views: 204.9ms | ActiveRecord: 0.0ms | Allocations: 9031)
+
+
+Started GET "/login" for ::1 at 2020-07-22 02:28:47 -0600
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 9.0ms | Allocations: 497)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 155ms (Views: 149.3ms | ActiveRecord: 0.0ms | Allocations: 5558)
+
+
+Started POST "/login" for ::1 at 2020-07-22 02:29:20 -0600
+Processing by SessionsController#do_login as HTML
+  Parameters: {"authenticity_token"=>"VoFhynTd1sFJ5IsLVacytsmbtKWzJl0fcPYx902heAHUvoW9LO5El5+IYKOw1GgaqBOkngiDs4cVkSnRi8qD2w==", "name_or_email"=>"Jax Snow", "password"=>"[FILTERED]", "commit"=>"Log In"}
+No template found for SessionsController#do_login, rendering head :no_content
+Completed 204 No Content in 20ms (ActiveRecord: 0.0ms | Allocations: 1798)
+
+
+Started GET "/login" for ::1 at 2020-07-22 02:46:12 -0600
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 76.9ms | Allocations: 3049)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 265ms (Views: 151.6ms | ActiveRecord: 3.6ms | Allocations: 18225)
+
+
+Started POST "/login" for ::1 at 2020-07-22 02:46:32 -0600
+Processing by SessionsController#do_login as HTML
+  Parameters: {"authenticity_token"=>"tqHMo+YVmCsmITOCtkXkBQupsQhYrKe3v52+Vn/2VUNz7cAoT+VaMXJjrWNq1fQnlGmRQmEggpU7fOd/G2rZkw==", "user"=>{"name_or_email"=>"Jax Snow", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (21.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `do_login'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `do_login'
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 8.3ms | Allocations: 880)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 22.8ms | Allocations: 3566)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for @user, url: do_login_path do |f| %>
+    2:   <fieldset>
+    3:     <%= f.label ':name_or_email' %>
+    4:     <%= f.text_field 'name_or_email' %>
+  
+app/views/sessions/login.html.erb:1
+app/controllers/sessions_controller.rb:15:in `do_login'
+Started GET "/login" for ::1 at 2020-07-22 02:50:45 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 4.6ms | Allocations: 497)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 136ms (Views: 52.7ms | ActiveRecord: 4.8ms | Allocations: 14541)
+
+
+Started POST "/login" for ::1 at 2020-07-22 02:50:55 -0600
+Processing by SessionsController#do_login as HTML
+  Parameters: {"authenticity_token"=>"Q7J0/kinM0/3Hu8K5mHN+Fb8z5HwxwtZ0R7De+FdLaSG/nh14VfxVaNcces68d3ayTzv28lLLntV/5pShcGhdA==", "name_or_email"=>"Jax Snow", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jax Snow"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `do_login'
+Redirected to http://localhost:3000/login
+Redirected to 
+Completed 500 Internal Server Error in 521ms (ActiveRecord: 1.3ms | Allocations: 1659)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/sessions_controller.rb:23:in `do_login'
+Started GET "/login" for ::1 at 2020-07-22 02:52:35 -0600
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 2.7ms | Allocations: 299)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 117ms (Views: 33.8ms | ActiveRecord: 6.2ms | Allocations: 13567)
+
+
+Started POST "/login" for ::1 at 2020-07-22 02:52:45 -0600
+Processing by SessionsController#do_login as HTML
+  Parameters: {"authenticity_token"=>"FO1mTxEzustcqShREiXJg3Q5VXt1xo7QIpH04F2WTyvRoWrEuMN40QjrtrDOtdmh6/l1MUxKq/KmcK3JOQrD+w==", "name_or_email"=>"Jax Snow", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jax Snow"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `do_login'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 476ms (ActiveRecord: 1.0ms | Allocations: 1197)
+
+
+Started GET "/login" for ::1 at 2020-07-22 02:52:45 -0600
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 2.1ms | Allocations: 290)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 33.2ms | ActiveRecord: 0.0ms | Allocations: 4404)
+
+
+Started POST "/login" for ::1 at 2020-07-22 02:52:49 -0600
+Processing by SessionsController#do_login as HTML
+  Parameters: {"authenticity_token"=>"gQERQjTFYBPpErtUS92J9xWgVtWCXw1SXfdjIB3DVzFETR3JnTWiCb1QJbWXTZnVimB2n7vTKHDZFjoJeV/b4Q==", "name_or_email"=>"", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", ""], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `do_login'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `do_login'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 31ms (ActiveRecord: 2.8ms | Allocations: 1652)
+
+
+Started GET "/login" for ::1 at 2020-07-22 02:52:50 -0600
+Processing by SessionsController#new as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 4.4ms | Allocations: 290)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 48ms (Views: 44.3ms | ActiveRecord: 0.0ms | Allocations: 4380)
+
+
+Started POST "/login" for ::1 at 2020-07-22 02:53:03 -0600
+Processing by SessionsController#do_login as HTML
+  Parameters: {"authenticity_token"=>"EW8cWiEDQeqI2A/FTUlPFf2pjzJrkNa/zE606/9HxqTUIxDRiPOD8NyakSSR2V83YmmveFIc851Ir+3Cm9tKdA==", "name_or_email"=>"Jax Snow", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Jax Snow"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `do_login'
+Redirected to http://localhost:3000/
+Completed 302 Found in 490ms (ActiveRecord: 1.0ms | Allocations: 1000)
+
+
+Started GET "/" for ::1 at 2020-07-22 02:53:04 -0600
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (Duration: 4.0ms | Allocations: 189)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 35.2ms | ActiveRecord: 0.0ms | Allocations: 4528)
+
+
+Started GET "/" for ::1 at 2020-07-22 02:55:51 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ApplicationController#welcome as HTML
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms | Allocations: 411)
+
+
+Started GET "/users/6" for ::1 at 2020-07-22 02:55:52 -0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mBook Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "books" INNER JOIN "favorite_books" ON "books"."id" = "favorite_books"."book_id" WHERE "favorite_books"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:33:in `favorite_books'
+  [1m[36mAuthor Exists? (5.0ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" INNER JOIN "favorite_authors" ON "authors"."id" = "favorite_authors"."author_id" WHERE "favorite_authors"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:5:in `favorite_authors'
+  [1m[36mGenre Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "genres" INNER JOIN "favorite_genres" ON "genres"."id" = "favorite_genres"."genre_id" WHERE "favorite_genres"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:61:in `favorite_genres'
+  Rendered users/show.html.erb within layouts/application (Duration: 339.4ms | Allocations: 31334)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 480ms (Views: 348.5ms | ActiveRecord: 38.1ms | Allocations: 45488)
+
+
