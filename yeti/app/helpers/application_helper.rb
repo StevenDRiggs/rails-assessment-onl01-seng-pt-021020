@@ -48,8 +48,6 @@ module ApplicationHelper
     self.send("destroy_#{object_.class_name.underscore}_path", object_.id)
   end
 
-  #######
-
   def display_attributes(object_)
     attrs = object_.attributes
     attrs.delete_if do |key, val|
@@ -87,5 +85,31 @@ module ApplicationHelper
     html << '</ul>'
 
     html.html_safe
+  end
+
+  def logout_button
+    case request.path
+    when self.send('root_path')
+      nil
+    when self.send('signup_path')
+      nil
+    when self.send('login_path')
+      nil
+    else
+      if request.path == self.send('logout_path')
+        method = :post
+        cancel_path = self.send('user_path', User.find(session[:user_id]))
+      else
+        method = :get
+      end
+      root = self.send('root_path')
+      logout_path = self.send('logout_path')
+      erb = "#{self.send('button_to', 'Log Out', logout_path, method: method)}"
+      if request.path == self.send('logout_path')
+        erb << "#{self.send('link_to', 'Cancel', cancel_path)}"
+      end
+
+      erb.html_safe
+    end
   end
 end
