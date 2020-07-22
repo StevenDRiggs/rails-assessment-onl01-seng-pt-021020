@@ -78,4 +78,14 @@ module ApplicationHelper
       html.html_safe
     end
   end
+
+  def render_popular(popular)
+    html = '<ul>'
+    popular.each do |name, count|
+      html << "<li>#{name} (#{pluralize(count, 'favorite')})</li>"
+    end
+    html << '</ul>'
+
+    html.html_safe
+  end
 end
