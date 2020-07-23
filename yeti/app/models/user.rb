@@ -14,6 +14,19 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
+
+  def self.find_or_create_by_auth_hash(auth_hash)
+    user = self.find_by(name: auth_hash[:name], email: auth_hash[:email])
+    if user.nil?
+      user = self.new(name: auth_hash[:name], email: auth_hash[:email], password: 'password')
+      unless user.save
+        return nil
+      end
+    end
+
+    user
+  end
+
   
   def fav_authors(author)
     self.favorite_authors.where(author_id: author.id).first

@@ -3,21 +3,33 @@ class SessionsController < ApplicationController
     render 'login'
   end
 
-  def do_login
-    @user = User.find_by(name: params[:name_or_email])
-    if @user.nil?
-      @user = User.find_by(email: params[:name_or_email])
-    end
+  def create
+    if params[:provider]
+      @user = User.find_or_create_by_auth_hash(auth_hash)
+      if @user.nil?
+        flash[:errors] = ["Authentication error. Check that your name and email registered on #{params[:provider].capitalize} is not already registered on Yeti."]
+        redirect_to login_path
+      else
+        session[:user_id] = @user.id
 
-    if @user.nil?
-      flash[:errors] = ['User not found']
-      redirect_to login_path
-    elsif @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to @user
+        redirect_to @user
+      end
     else
-      flash[:errors] = ['Password incorrect']
-      redirect_to login_path
+      @user = User.find_by(name: params[:name_or_email])
+      if @user.nil?
+        @user = User.find_by(email: params[:name_or_email])
+      end
+
+      if @user.nil?
+        flash[:errors] = ['User not found']
+        redirect_to login_path
+      elsif @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect_to @user
+      else
+        flash[:errors] = ['Password incorrect']
+        redirect_to login_path
+      end
     end
   end
 
@@ -27,5 +39,12 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to root_path
+  end
+
+
+  private
+
+  def auth_hash
+    request.env['omniauth.auth'][:extra][:raw_info]
   end
 end
