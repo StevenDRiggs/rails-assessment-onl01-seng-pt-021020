@@ -9,7 +9,7 @@ class Genre < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.popular
-    self.joins(:favorite_genres).group(:name).order(count_name: :desc).order(name: :asc).count(:name)
-  end
+  scope :popular, -> {
+    joins(:favorite_genres).group(:name).order('COUNT(genres.name) DESC').order(name: :asc)
+  }
 end

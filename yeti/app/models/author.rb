@@ -9,7 +9,7 @@ class Author < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.popular
-    self.joins(:favorite_authors).group(:name).order(count_name: :desc).order(name: :asc).count(:name)
-  end
+  scope :popular, -> {
+    joins(:favorite_authors).group(:name).order('COUNT(authors.name) DESC').order(name: :asc)
+  }
 end

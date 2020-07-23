@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_135548) do
+ActiveRecord::Schema.define(version: 2020_07_23_111530) do
 
   create_table "author_books", force: :cascade do |t|
     t.integer "author_id"
@@ -32,12 +32,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_135548) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.text "synopsis"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+# Could not dump table "books" because of following StandardError
+#   Unknown type 'name' for column 'title'
 
   create_table "favorite_authors", force: :cascade do |t|
     t.integer "user_id"
