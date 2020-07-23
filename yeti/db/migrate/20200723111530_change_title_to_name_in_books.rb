@@ -1,5 +1,6 @@
 class ChangeTitleToNameInBooks < ActiveRecord::Migration[6.0]
   def change
-    change_column :books, :title, :name
+    remove_column :books, :title
+    add_column :books, :name, :string
   end
 end

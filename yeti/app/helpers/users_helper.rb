@@ -38,7 +38,7 @@ module UsersHelper
 
       books.each do |book|
         fb = user.fav_books(book)
-        html << "#{self.send('link_to', book.title, book)}"
+        html << "#{self.send('link_to', book.name, book)}"
         html << self.send('form_for', fb, url: update_book_notes_path(user, fb)) { |f|
           inner_html = "#{f.label :notes}"
           inner_html << "#{f.text_area :notes}"

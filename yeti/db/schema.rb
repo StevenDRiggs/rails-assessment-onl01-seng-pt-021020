@@ -32,8 +32,12 @@ ActiveRecord::Schema.define(version: 2020_07_23_111530) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "books" because of following StandardError
-#   Unknown type 'name' for column 'title'
+  create_table "books", force: :cascade do |t|
+    t.text "synopsis"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+  end
 
   create_table "favorite_authors", force: :cascade do |t|
     t.integer "user_id"

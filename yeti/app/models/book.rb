@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   has_many :favorite_books
   has_many :users, through: :favorite_books
 
-  validates :title, presence: true
+  validates :name, presence: true
 
   scope :popular, -> {
     joins(:favorite_books).group(:name).order('COUNT(books.name) DESC').order(name: :asc)

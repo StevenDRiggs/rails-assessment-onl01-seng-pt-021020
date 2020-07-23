@@ -8,8 +8,8 @@ class ApplicationRecord < ActiveRecord::Base
   def display_name
     if self.has_attribute?(:name)
       self.name
-    elsif self.has_attribute?(:title)
-      self.title
+    elsif self.has_attribute?(:name)
+      self.name
     else
       nil
     end

@@ -28,7 +28,7 @@ end
   author = Author.create(name: "author#{j}")
   puts "created #{author}"
 
-  book = Book.create(title: "book#{j}")
+  book = Book.create(name: "book#{j}")
   puts "created #{book}"
 
   genre = Genre.create(name: "genre#{j}")
