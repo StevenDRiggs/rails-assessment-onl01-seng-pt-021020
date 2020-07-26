@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
 
   def edit
     begin
-      self.instance_variable_set("@#{@snake_case}", @obj.find(params[:id]))
+      @object_ = @obj.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:errors] = ["#{@obj.name} not found"]
       redirect_to self.send("#{@snake_case.pluralize}_path")

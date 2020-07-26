@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class User < ApplicationRecord
   has_secure_password
 
@@ -18,7 +20,7 @@ class User < ApplicationRecord
   def self.find_or_create_by_auth_hash(auth_hash)
     user = self.find_by(name: auth_hash[:name], email: auth_hash[:email])
     if user.nil?
-      user = self.new(name: auth_hash[:name], email: auth_hash[:email], password: 'password')
+      user = self.new(name: auth_hash[:name], email: auth_hash[:email], password: SecureRandom.hex(16))
       unless user.save
         return nil
       end
