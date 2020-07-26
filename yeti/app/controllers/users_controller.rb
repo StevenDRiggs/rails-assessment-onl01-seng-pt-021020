@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  before_action :admin_or_self_required, only: [:edit, :update] do
+    define_variables
+  end
+  before_action :admin_required, only: [:index, :delete, :destroy] do
+    define_variables
+  end
+
+
   def create
     @object_ = @obj.new(self.object_params)
     if @object_.save
