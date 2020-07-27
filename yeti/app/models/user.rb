@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def fav_books(book)
-    fb = self.favorite_books.where(book_id: book.id).first
+    self.favorite_books.where(book_id: book.id).first
   end
   
   def fav_genres(genre)

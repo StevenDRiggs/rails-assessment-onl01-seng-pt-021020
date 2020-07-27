@@ -67,10 +67,14 @@ module ApplicationHelper
       '<h1>None found in database</h1>'.html_safe
     else
       group = objects[0].class.name.pluralize
+      user = User.find(session[:user_id])
+      user_favorites = user.send(group.tableize)
+
       html = "<h2>#{group}</h2>"
 
       objects.each do |object_|
         html << "<h3>#{self.send('link_to', object_.display_name, object_)}</h3>"
+        html << favorited?(object_, user, user_favorites)
       end
 
       html.html_safe
@@ -112,4 +116,15 @@ module ApplicationHelper
       erb.html_safe
     end
   end
+
+  private
+    def favorited?(object_, user, user_favorites)
+      if user_favorites.include?(object_)
+        html = self.send('button_to', 'Unfavorite', "/users/#{user.id}/unfavorite/#{object_.class_name}/#{object_.id}", class: 'unfavorite_button')
+      else
+        html = self.send('button_to', 'Favorite', "/users/#{user.id}/favorite/#{object_.class_name}/#{object_.id}", class: 'favorite_button')
+      end
+
+      html.html_safe
+    end
 end

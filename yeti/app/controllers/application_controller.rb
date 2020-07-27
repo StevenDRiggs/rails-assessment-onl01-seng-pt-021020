@@ -36,7 +36,11 @@ class ApplicationController < ActionController::Base
   def create
     @object_ = @obj.new(self.object_params)
     if @object_.save
-      redirect_to @object_
+      if @object_.is_a?(User)
+        redirect_to @object_
+      else
+        redirect_to self.send("#{@obj.name.tableize}_path")
+      end
     else
       flash[:errors] = @object_.errors.full_messages
       render :new
@@ -88,6 +92,7 @@ class ApplicationController < ActionController::Base
       redirect_to self.send("#{@snake_case.pluralize}_path")
     end
   end
+
 
   protected
     def is_admin?

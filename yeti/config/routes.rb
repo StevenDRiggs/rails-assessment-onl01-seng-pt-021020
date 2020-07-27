@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :show, :new, :create]
   end
 
+  post '/users/:user_id/unfavorite/:class_/:id', to: 'users#unfavorite'
+  post '/users/:user_id/favorite/:class_/:id', to: 'users#favorite'
+
   patch '/users/:user_id/favorite_authors/:id', to: 'favorite_authors#update', as: 'update_author_notes'
   patch '/users/:user_id/favorite_books/:id', to: 'favorite_books#update', as: 'update_book_notes'
   patch '/users/:user_id/favorite_genres/:id', to: 'favorite_genres#update', as: 'update_genre_notes'
