@@ -99,6 +99,26 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def profile
+    case request.path
+    when self.send('root_path')
+      nil
+    when self.send('signup_path')
+      nil
+    when self.send('login_path')
+      nil
+    else
+      user = User.find_by(id: session[:user_id])
+      if session[:user_id] && request.path == self.send('user_path', user)
+        nil
+      elsif session[:user_id]
+        self.send('link_to', 'My Profile', user).html_safe
+      else
+        nil
+      end
+    end
+  end
+
   def logout_button
     case request.path
     when self.send('root_path')

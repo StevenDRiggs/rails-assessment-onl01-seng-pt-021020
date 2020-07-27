@@ -33,7 +33,7 @@ module UsersHelper
       unless items.empty? 
         html = <<-HTML
           <fieldset>
-            <legend>Favorite #{item_caption} (#{self.send('link_to', "View All #{item_caption}", self.send("user_#{list_type}_path", user))}</legend>
+            <legend>Favorite #{item_caption} (#{self.send('link_to', "View All #{item_caption}", self.send("user_#{list_type}_path", user))})</legend>
         HTML
 
         items.each do |item|
