@@ -51,7 +51,7 @@ module ApplicationHelper
   def display_attributes(object_)
     attrs = object_.attributes
     attrs.delete_if do |key, val|
-      %w(created_at updated_at id).include? (key) or val == object_.display_name
+      %w(created_at updated_at id).include? (key) or val == object_.name
     end
 
     attrs.collect do |key, val|
@@ -64,8 +64,8 @@ module ApplicationHelper
 
   def index(objects)
     if objects.empty?
-      '<h1>None found in database</h1>'.html_safe
-    else
+      html = '<h1>None found in database</h1>'
+    elsif !objects[0].is_a?(User)
       group = objects[0].class.name.pluralize
       user = User.find(session[:user_id])
       user_favorites = user.send(group.tableize)
@@ -73,12 +73,20 @@ module ApplicationHelper
       html = "<h2>#{group}</h2>"
 
       objects.each do |object_|
-        html << "<h3>#{self.send('link_to', object_.display_name, object_)}</h3>"
+        html << "<h3>#{self.send('link_to', object_.name, object_)}</h3>"
         html << favorited?(object_, user, user_favorites)
       end
+    else
+      html = '<ul>'
 
-      html.html_safe
+      objects.each do |user|
+        html << "<li>#{self.send('link_to', user.name, user)}</li>"
+      end
+
+      html << '</ul>'
     end
+
+    html.html_safe
   end
 
   def render_popular(popular)

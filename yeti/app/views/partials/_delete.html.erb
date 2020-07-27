@@ -1,4 +1,4 @@
-<h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.display_name %>?"</h3>
+<h3>Are you sure you want to delete the <%= obj.class_name %>, "<%= obj.name %>?"</h3>
 
 <%= form_tag destroy_path(obj), method: :delete do %>
   <%= submit_tag "Delete #{obj.class}" %>

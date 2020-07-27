@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :admin_or_self_required, only: [:edit, :update] do
     define_variables
   end
-  before_action :admin_required, only: [:index, :delete, :destroy] do
+  before_action :admin_required, only: [:delete, :destroy] do
     define_variables
   end
   before_action :admin_or_self_required, only: [:unfavorite, :favorite]
