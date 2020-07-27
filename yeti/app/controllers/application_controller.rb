@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   skip_before_action :define_variables, only: [:is_admin?, :login_required, :admin_or_self_required, :admin_required]
   before_action :login_required, only: [:admin_or_self_required, :admin_required]
 
+  helper_method :is_admin?
+
   def welcome
     if session[:user_id]
       redirect_to user_path(session[:user_id])
@@ -52,12 +54,12 @@ class ApplicationController < ActionController::Base
 
   def update
     begin
-      object_ = self.instance_variable_set("@#{@snake_case}", @obj.find(params[:id]))
-      if object_.update(self.object_params)
-        redirect_to object_
+      @object_ = self.instance_variable_set("@#{@snake_case}", @obj.find(params[:id]))
+      if @object_.update(self.object_params)
+        redirect_to @object_
       else
-        flash[:errors] = object_.errors.full_messages
-        render self.send("edit_#{@snake_case}_path")
+        flash[:errors] = @object_.errors.full_messages
+        render :edit
       end
     rescue ActiveRecord::RecordNotFound
       flash[:errors] = ["#{@obj.name} not found"]
