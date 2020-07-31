@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :admin_required, only: [:delete, :destroy] do
     define_variables
   end
-  before_action :admin_or_self_required, only: [:unfavorite, :favorite]
+  before_action :admin_or_self_required, only: [:edit, :create, :unfavorite, :favorite]
+  before_action :login_required
 
 
   def create

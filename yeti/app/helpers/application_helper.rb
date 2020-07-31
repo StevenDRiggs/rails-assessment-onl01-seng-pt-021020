@@ -66,7 +66,7 @@ module ApplicationHelper
     if objects.empty?
       html = '<h1>None found in database</h1>'
     elsif !objects[0].is_a?(User)
-      group = objects[0].class.name.pluralize
+      group = objects[0].class_name.pluralize
       user = User.find(session[:user_id])
       user_favorites = user.send(group.tableize)
 
@@ -74,7 +74,7 @@ module ApplicationHelper
 
       objects.each do |object_|
         html << "<h3>#{self.send('link_to', object_.name, object_)}</h3>"
-        html << favorited?(object_, user, user_favorites)
+        html << favorite_button(object_, user, user_favorites)
       end
     else
       html = '<ul>'
@@ -146,9 +146,22 @@ module ApplicationHelper
   end
 
   private
-    def favorited?(object_, user, user_favorites)
+    def favorite_button(object_, user, user_favorites)
       if user_favorites.include?(object_)
         html = self.send('button_to', 'Unfavorite', "/users/#{user.id}/unfavorite/#{object_.class_name}/#{object_.id}", class: 'unfavorite_button')
+        if params[:user_id] && params[:user_id].to_i == session[:user_id]
+          fav_class = "Favorite#{object_.class_name}".constantize
+          search_key = object_.class_name.underscore.to_sym
+          fav = fav_class.where(:user_id => user.id, search_key => object_.id).first
+          inner_html = <<-HTML
+            <fieldset>
+              <legend>My Notes</legend>
+              <p>#{fav.notes ? fav.notes : 'N/A'}</p>
+            </fieldset>
+          HTML
+
+          html << inner_html.html_safe
+        end
       else
         html = self.send('button_to', 'Favorite', "/users/#{user.id}/favorite/#{object_.class_name}/#{object_.id}", class: 'favorite_button')
       end

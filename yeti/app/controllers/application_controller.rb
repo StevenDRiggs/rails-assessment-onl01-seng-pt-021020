@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :define_variables, except: :welcome
   skip_before_action :define_variables, only: [:is_admin?, :login_required, :admin_or_self_required, :admin_required]
-  before_action :login_required, only: [:admin_or_self_required, :admin_required]
+  before_action :login_required, except: [:welcome, :is_admin?]
 
   helper_method :is_admin?
 
@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
       user_id = user_id.to_i if user_id
 
       unless user_id && user_id == session[:user_id] || is_admin?
-        flash[:errors] = ["You must have admin priveledges to view or edit other users' information"]
+        flash[:errors] = ["You must be logged in with admin privileges to view or edit other users' information"]
         redirect_to root_path
       end
     end
@@ -126,7 +126,7 @@ class ApplicationController < ActionController::Base
       user_id = params[:user_id].nil? ? params[:id] : params[:user_id]
 
       unless user_id && is_admin?
-        flash[:errors] = ['You must be logged in with admin priveledges to view this page']
+        flash[:errors] = ['You must be logged in with admin priveleges to view this page']
         redirect_to root_path
       end
     end

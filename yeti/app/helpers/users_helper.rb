@@ -12,6 +12,14 @@ module UsersHelper
     end
   end
 
+  def edit_profile(user)
+    if session[:user_id] == user.id
+      self.send('link_to', 'Edit Profile', self.send('edit_user_path', user)).html_safe
+    else
+      nil
+    end
+  end
+
   def favorite_authors(user)
     favorites(user, 'authors')
   end
