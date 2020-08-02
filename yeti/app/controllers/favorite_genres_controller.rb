@@ -1,4 +1,7 @@
 class FavoriteGenresController < ApplicationController
+
+  # restful routing override methods
+
   def update
     begin
       FavoriteGenre.find(params[:id]).update(object_params)
@@ -10,9 +13,12 @@ class FavoriteGenresController < ApplicationController
     redirect_to user_path(params[:user_id])
   end
 
+  # processing methods 
+
   protected
 
-  def object_params
-    params.require(:favorite_genre).permit([:notes])
-  end
+    def object_params
+      params.require(:favorite_genre).permit([:notes])
+    end
+
 end

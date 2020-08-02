@@ -1,4 +1,7 @@
 class FavoriteAuthorsController < ApplicationController
+
+  # restful routing override methods 
+
   def update
     begin
       FavoriteAuthor.find(params[:id]).update(object_params)
@@ -10,9 +13,12 @@ class FavoriteAuthorsController < ApplicationController
     redirect_to user_path(params[:user_id])
   end
 
+  # processing methods 
+
   protected
 
-  def object_params
-    params.require(:favorite_author).permit([:notes])
-  end
+    def object_params
+      params.require(:favorite_author).permit([:notes])
+    end
+
 end

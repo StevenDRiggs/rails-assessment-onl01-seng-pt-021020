@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-  def new
-    render 'login'
-  end
+
+  # restful routing override methods
 
   def create
     if params[:provider]
@@ -33,18 +32,26 @@ class SessionsController < ApplicationController
     end
   end
 
-  def logout
-  end
-
   def destroy
     session.clear
     redirect_to root_path
   end
 
+  def new
+    render 'login'
+  end
+
+  # non-restful routing methods
+
+  def logout
+  end
+
+  # processing methods 
 
   private
 
-  def auth_hash
-    request.env['omniauth.auth'][:extra][:raw_info]
-  end
+    def auth_hash
+      request.env['omniauth.auth'][:extra][:raw_info]
+    end
+
 end

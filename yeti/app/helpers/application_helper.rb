@@ -40,6 +40,10 @@ module ApplicationHelper
     end
   end
 
+  def edit_path(object_)
+    self.send("edit_#{object_.class_name.underscore}_path", object_)
+  end
+
   def delete_path(object_)
     self.send("delete_#{object_.class_name.underscore}_path", object_.id)
   end
@@ -142,6 +146,30 @@ module ApplicationHelper
       end
 
       erb.html_safe
+    end
+  end
+
+  def favorite(object_)
+    user = User.find(session[:user_id])
+    user_favorites = user.send(object_.class_name.tableize)
+
+    favorite_button(object_, user, user_favorites)
+  end
+
+  def notes(object_)
+    fav_class = "Favorite#{object_.class_name}".constantize
+    search_key = "#{object_.class_name.underscore}_id".to_sym
+    user_favorite = fav_class.where(:user_id => session[:user_id], search_key => object_.id).first
+
+    if user_favorite
+      html = <<-HTML
+        <fieldset>
+          <legend>My Notes</legend>
+          #{user_favorite.notes ? user_favorite.notes : 'N/A'}
+        </fieldset>
+      HTML
+
+      html.html_safe
     end
   end
 
