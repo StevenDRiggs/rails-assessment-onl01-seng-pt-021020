@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :login_required, except: :object_params do
+  before_action :login_required, except: [:object_params do
     define_variables
   end
 

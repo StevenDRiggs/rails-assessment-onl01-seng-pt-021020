@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+  # display messages to user
+
   def flashed
     if flash[:errors]
       class_ = 'errors'
@@ -28,6 +30,20 @@ module ApplicationHelper
       nil
     end
   end
+  
+  # routing helpers
+
+  def delete_path(object_)
+    self.send("delete_#{object_.class_name.underscore}_path", object_.id)
+  end
+
+  def destroy_path(object_)
+    self.send("destroy_#{object_.class_name.underscore}_path", object_.id)
+  end
+
+  def edit_path(object_)
+    self.send("edit_#{object_.class_name.underscore}_path", object_)
+  end
 
   def index_path(object_)
     self.send("#{object_.class_name.tableize}_path")
@@ -41,16 +57,35 @@ module ApplicationHelper
     end
   end
 
-  def edit_path(object_)
-    self.send("edit_#{object_.class_name.underscore}_path", object_)
-  end
+  # rendering helpers
 
-  def delete_path(object_)
-    self.send("delete_#{object_.class_name.underscore}_path", object_.id)
-  end
+  def display_associations(object_)
+    assocs = %w(authors books genres)
+    assocs.delete_if do |assoc|
+      assoc == object_.class_name.tableize
+    end
 
-  def destroy_path(object_)
-    self.send("destroy_#{object_.class_name.underscore}_path", object_.id)
+    html = '<h3>'
+
+    assocs.each do |assoc|
+      html << "#{assoc.capitalize}</h3><ul>"
+      found = object_.send(assoc)
+      unless found.empty?
+        found.each do |found_item|
+          html << <<-HTML
+            <li>
+              #{self.send('link_to', found_item.name, found_item)}
+            </li>
+          HTML
+        end
+
+        html << '</ul>'
+      else
+        html << 'None found</ul>'
+      end
+    end
+
+    html.html_safe
   end
 
   def display_attributes(object_)
@@ -65,6 +100,13 @@ module ApplicationHelper
         <p>#{val || 'Not provided'}</p>
       HTML
     end.join('<br>').html_safe
+  end
+
+  def favorite(object_)
+    user = User.find(session[:user_id])
+    user_favorites = user.send(object_.class_name.tableize)
+
+    favorite_button(object_, user, user_favorites)
   end
 
   def index(objects)
@@ -94,36 +136,6 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def render_popular(popular)
-    html = '<ul>'
-    popular.each do |object_|
-      html << "<li>#{object_.name} (#{pluralize(popular.count[object_.name], 'favorite')})</li>"
-    end
-    html << '</ul>'
-
-    html.html_safe
-  end
-
-  def profile
-    case request.path
-    when self.send('root_path')
-      nil
-    when self.send('signup_path')
-      nil
-    when self.send('login_path')
-      nil
-    else
-      user = User.find_by(id: session[:user_id])
-      if session[:user_id] && request.path == self.send('user_path', user)
-        nil
-      elsif session[:user_id]
-        self.send('link_to', 'My Profile', user).html_safe
-      else
-        nil
-      end
-    end
-  end
-
   def logout_button
     case request.path
     when self.send('root_path')
@@ -150,13 +162,6 @@ module ApplicationHelper
     end
   end
 
-  def favorite(object_)
-    user = User.find(session[:user_id])
-    user_favorites = user.send(object_.class_name.tableize)
-
-    favorite_button(object_, user, user_favorites)
-  end
-
   def notes(object_)
     fav_class = "Favorite#{object_.class_name}".constantize
     search_key = "#{object_.class_name.underscore}_id".to_sym
@@ -174,7 +179,40 @@ module ApplicationHelper
     end
   end
 
+  def profile
+    case request.path
+    when self.send('root_path')
+      nil
+    when self.send('signup_path')
+      nil
+    when self.send('login_path')
+      nil
+    else
+      user = User.find_by(id: session[:user_id])
+      if session[:user_id] && request.path == self.send('user_path', user)
+        nil
+      elsif session[:user_id]
+        self.send('link_to', 'My Profile', user).html_safe
+      else
+        nil
+      end
+    end
+  end
+
+  def render_popular(popular)
+    html = '<ul>'
+    popular.each do |object_|
+      html << "<li>#{object_.name} (#{pluralize(popular.count[object_.name], 'favorite')})</li>"
+    end
+    html << '</ul>'
+
+    html.html_safe
+  end
+
+  # processing methods
+
   private
+
     def favorite_button(object_, user, user_favorites)
       if user_favorites.include?(object_)
         html = self.send('button_to', 'Unfavorite', "/users/#{user.id}/unfavorite/#{object_.class_name}/#{object_.id}", class: 'unfavorite_button')
@@ -197,4 +235,5 @@ module ApplicationHelper
 
       html.html_safe
     end
+
 end
