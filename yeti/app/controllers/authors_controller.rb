@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
   protected
 
     def object_params
-      params.require(:author).permit([:name])
+      params.require(:author).permit([:name, book_ids: []])
     end
 
 end

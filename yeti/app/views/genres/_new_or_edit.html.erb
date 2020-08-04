@@ -2,6 +2,11 @@
   <fieldset>
     <%= f.label :name %>
     <%= f.text_field :name %>
+
+    <br><br>
+
+    <%= f.label :books %><br>
+    <%= f.collection_check_boxes :book_ids, Book.all, :id, :name %>
   </fieldset>
 
   <%= f.submit %>
