@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :define_variables
+  before_action :login_required, only: [:destroy, :logout] 
 
   # restful routing override methods
 

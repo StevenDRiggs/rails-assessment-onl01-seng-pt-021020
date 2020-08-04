@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :define_variables, only: [:crate, :destroy, :edit, :index, :new, :show, :update, :delete]
+  before_action :login_required, only: [:admin_or_self_required, :admin_required]
 
   helper_method :is_admin?
   

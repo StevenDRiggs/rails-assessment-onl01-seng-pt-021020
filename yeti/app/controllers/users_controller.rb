@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :login_required, only: [:favorite, :unfavorite] 
 
   # restful routing override methods
 

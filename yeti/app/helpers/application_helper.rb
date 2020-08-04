@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def flashed
     if flash[:errors]
       class_ = 'errors'

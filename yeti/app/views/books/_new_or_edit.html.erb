@@ -3,8 +3,20 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
 
-    <%= f.label :synopsis %>
+    <br><br>
+
+    <%= f.label :synopsis %><br>
     <%= f.text_area :synopsis %>
+
+    <hr>
+
+    <%= f.label :authors %><br>
+    <%= f.collection_check_boxes :author_ids, Author.all, :id, :name %>
+
+    <br><br>
+
+    <%= f.label :genres %><br>
+    <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
   </fieldset>
 
   <%= f.submit %>
