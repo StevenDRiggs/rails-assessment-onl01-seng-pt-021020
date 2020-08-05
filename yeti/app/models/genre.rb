@@ -7,6 +7,8 @@ class Genre < ApplicationRecord
   has_many :favorite_genres
   has_many :users, through: :favorite_genres
 
+  accepts_nested_attributes_for :books
+
   validates :name, presence: true
 
   scope :popular, -> {

@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   protected
 
     def object_params
-      params.require(:book).permit([:name, :synopsis, author_ids: [], genre_ids: []])
+      params.require(:book).permit([:name, :synopsis, author_ids: [], genre_ids: [], authors_attributes: [:name], genres_attributes: [:name]])
     end
 
 end

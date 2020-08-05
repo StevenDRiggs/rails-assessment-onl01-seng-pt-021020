@@ -7,6 +7,12 @@
 
     <%= f.label :books %><br>
     <%= f.collection_check_boxes :book_ids, Book.all, :id, :name %>
+
+    <br>
+
+    <%= f.fields_for :books, object_.books.build do |books_fields| %>
+      <%= books_fields.text_field :name %>
+    <% end %>
   </fieldset>
 
   <%= f.submit %>

@@ -8,6 +8,9 @@ class Book < ApplicationRecord
   has_many :favorite_books
   has_many :users, through: :favorite_books
 
+  accepts_nested_attributes_for :authors
+  accepts_nested_attributes_for :genres
+
   validates :name, presence: true
 
   scope :popular, -> {

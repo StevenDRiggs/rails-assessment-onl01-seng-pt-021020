@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :login_required, except: [:object_params do
+  before_action :login_required, except: [:object_params] do
     define_variables
   end
 
@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
   protected
 
     def object_params
-      params.require(:author).permit([:name, book_ids: []])
+      params.require(:author).permit([:name, book_ids: [], books_attributes: [:name]])
     end
 
 end
