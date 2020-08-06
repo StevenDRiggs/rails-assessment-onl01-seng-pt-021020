@@ -1,16 +1,6 @@
 module UsersHelper
-  def user_email(user)
-    if user.id == session[:user_id] || is_admin?
-      html = <<-HTML
-        <h3>Email</h3>
-        <p>#{@user.email}</p>
-      HTML
 
-      html.html_safe
-    else
-      nil
-    end
-  end
+  # rendering helpers
 
   def edit_profile(user)
     if session[:user_id] == user.id
@@ -32,8 +22,23 @@ module UsersHelper
     favorites(user, 'genres')
   end
 
+  def user_email(user)
+    if user.id == session[:user_id] || is_admin?
+      html = <<-HTML
+        <h3>Email</h3>
+        <p>#{@user.email}</p>
+      HTML
+
+      html.html_safe
+    else
+      nil
+    end
+  end
+
+  # processing methods
 
   private
+
     def favorites(user, list_type)
       items = user.send(list_type)
       item_caption = list_type.capitalize
@@ -67,4 +72,5 @@ module UsersHelper
 
       html.html_safe
     end
+    
 end

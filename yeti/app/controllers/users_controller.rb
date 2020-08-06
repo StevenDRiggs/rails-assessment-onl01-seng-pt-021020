@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # non-restfull routing methods
+  # non-restful routing methods
 
   def favorite
     begin
